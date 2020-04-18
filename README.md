@@ -7,12 +7,7 @@ https://www.mediawiki.org/wiki/Extension:SimpleMathJax
 * git clone in extensions directory
 * Using CDN is recommended. Because it's much faster than using local resources in most cases. ("the benefits of using a CDN")
 ```Bash
-$ git clone https://github.com/jmnote/SimpleMathJax.git
-```
-
-* (Optional) If you want to use not CDN but local mathjax scripts, you can use git clone recursive.
-```Bash
-$ git clone --recursive https://github.com/jmnote/SimpleMathJax.git
+$ git clone --recurse-submodules https://github.com/dli7319/SimpleMathJax3
 ```
 
 * LocalSetting.php
@@ -23,11 +18,11 @@ wfLoadExtension( 'SimpleMathJax' );
 # Optional Settings
 | Setting name         | Default value           | Description                                   |
 | -------------------- | ----------------------- | --------------------------------------------- |
-| `$wgSmjSize`         | 110                     | font size                                     |
+| `$wgSmjScale`        | 1.0                     | font size                                     |
 | `$wgSmjUseCDN`       | true                    | use CDN or local scripts                      |
 | `$wgSmjUseChem`      | true                    | enable chem tag                               |
 | `$wgSmjInlineMath`   | []                      | add some additional inlineMath symbols pairs  |
-| `$wgSmjShowMathMenu` | false                   | enable MathJax context menu                   |
+| `$wgSmjShowMathMenu` | true                    | enable MathJax context menu                   |
 
 If you want to change font size, set `$wgSmjSize`.
 ```PHP
@@ -45,10 +40,4 @@ If you want to enable some additional inlineMath symbol pairs, set `$wgSmjInline
 ```PHP
 wfLoadExtension( 'SimpleMathJax' );
 $wgSmjInlineMath = [["$","$"],["\\(","\\)"]];
-```
-
-If you want to enable MathJax context menu, set `$wgSmjShowMathMenu`.
-```PHP
-wfLoadExtension( 'SimpleMathJax' );
-$wgSmjShowMathMenu = true;
 ```
