@@ -32,13 +32,35 @@ if (mw.config.get('wgSmjShowMathMenu') === false) {
 window.MathJax = MathJax;
 
 if (useCDN === false) {
-  $.getScript(mathjaxScriptPath);
-} else {
-  $.getScript(polyfillScript)
-  .done(function( script, textStatus ) {
-    $.getScript(mathjaxScriptPath);
-  })
-  .fail(function( jqxhr, settings, exception ) {
-    $.getScript(mathjaxScriptPath);
+  loadScript(mathjaxScriptPath, {
+    id: "MathJax-script"
   });
+} else {
+  loadScript(polyfillScript, {
+    done: function() {
+    loadScript(mathjaxScriptPath, {
+        id: "MathJax-script",
+    });
+  }});
+}
+
+function loadScript(src, options) {
+  options = options || {};
+  var done = options.done;
+  var js = document.createElement('script');
+  js.src = src;
+  js.onload = function() {
+    if (done != null) {
+      done();
+    }
+  };
+  js.onerror = function() {
+    if (done != null) {
+      done(new Error('Failed to load script ' + src));
+    }
+  };
+  if (options.id != null) {
+    js.id = options.id;
+  }
+  document.head.appendChild(js);
 }
