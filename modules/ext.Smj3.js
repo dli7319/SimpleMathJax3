@@ -1,7 +1,8 @@
 var mathjaxScriptPath = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
 var polyfillScript = 'https://polyfill.io/v3/polyfill.min.js?features=es6';
-if (mw.config.get('wgSmjUseCDN') === false) {
-  mathjaxScriptPath = mw.config.get('wgExtensionAssetsPath') + '/SimpleMathJax/modules/MathJax/es5/tex-mml-chtml.js';
+var useCDN = mw.config.get('wgSmjUseCDN');
+if (useCDN === false) {
+  mathjaxScriptPath = mw.config.get('wgExtensionAssetsPath') + '/SimpleMathJax3/node_modules/MathJax/es5/tex-mml-chtml.js';
 }
 
 var MathJax = {
@@ -30,5 +31,14 @@ if (mw.config.get('wgSmjShowMathMenu') === false) {
 }
 window.MathJax = MathJax;
 
-$.getScript(polyfillScript);
-$.getScript(mathjaxScriptPath);
+if (useCDN === false) {
+  $.getScript(mathjaxScriptPath);
+} else {
+  $.getScript(polyfillScript)
+  .done(function( script, textStatus ) {
+    $.getScript(mathjaxScriptPath);
+  })
+  .fail(function( jqxhr, settings, exception ) {
+    $.getScript(mathjaxScriptPath);
+  });
+}

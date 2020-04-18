@@ -10,7 +10,8 @@ class SimpleMathJax
 
     public static function setup(Parser $parser)
     {
-        global $wgOut, $wgSmjUseCDN, $wgSmjScale, $wgSmjUseChem, $wgSmjShowMathMenu, $wgSmjInlineMath, $wgSmjDisplayMath;
+        global $wgOut, $wgSmjUseCDN, $wgSmjScale, $wgSmjUseChem, $wgSmjShowMathMenu,
+         $wgSmjInlineMath, $wgSmjDisplayMath, $wgSmjConvertMath;
 
         $smjModule = 'ext.Smj3';
         $wgOut->addModules($smjModule);
@@ -23,7 +24,9 @@ class SimpleMathJax
         $wgSmjInlineMath[] = ["[math]","[/math]"];
         $wgOut->addJsConfigVars('wgSmjInlineMath', $wgSmjInlineMath);
         $wgOut->addJsConfigVars('wgSmjDisplayMath', $wgSmjDisplayMath);
-        $parser->setHook('math', __CLASS__ . '::renderMath');
+        if ($wgSmjConvertMath) {
+            $parser->setHook('math', __CLASS__ . '::renderMath');
+        }
         if ($wgSmjUseChem) {
             $parser->setHook('chem', __CLASS__ . '::renderChem');
         }
@@ -31,9 +34,9 @@ class SimpleMathJax
 
     public static function renderMath($tex, array $args, Parser $parser, PPFrame $frame)
     {
-        $tex = str_replace('\>', '\;', $tex);
-        $tex = str_replace('<', '\lt ', $tex);
-        $tex = str_replace('>', '\gt ', $tex);
+        // $tex = str_replace('\>', '\;', $tex);
+        // $tex = str_replace('<', '\lt ', $tex);
+        // $tex = str_replace('>', '\gt ', $tex);
         return self::renderTex($tex, $parser);
     }
 
@@ -45,6 +48,6 @@ class SimpleMathJax
 
     private static function renderTex($tex, $parser)
     {
-        return ["[math]${tex}[/math]", 'markerType'=>'nowiki'];
+        return ["\\(${tex}\\)", 'markerType'=>'nowiki'];
     }
 }
