@@ -26,28 +26,8 @@ wfLoadExtension( 'SimpleMathJax' );
 | `$wgSmjShowMathMenu` | true                          | enable MathJax context menu                   |
 | `$wgSmjConvertMath`  | true                          | converts [<math>,</math>] to [\\(,\\)] on load  |
 
-If you want to change font size, set `$wgSmjSize`.
-```PHP
-wfLoadExtension( 'SimpleMathJax' );
-$wgSmjSize = 150;
-```
-
-If you want to use local module, set `$wgSmjUseCDN`.
-```PHP
-wfLoadExtension( 'SimpleMathJax' );
-$wgSmjUseCDN = false;
-```
-
-If you want to enable some additional inlineMath symbol pairs, set `$wgSmjInlineMath`.
-```PHP
-wfLoadExtension( 'SimpleMathJax' );
-$wgSmjInlineMath = [["$","$"],["\\(","\\)"]];
-```
-
-
 ## TODO
 * Implement a smart way to convert [\\(, \\)] to [<math>, </math>] when editing.
-
 
 ## Notes
 * `$wgSmjConvertMath` will allow you to use your existing tex math without editing your mediawiki pages. However, this will prevent you from using the MathML syntax with MathJax.
