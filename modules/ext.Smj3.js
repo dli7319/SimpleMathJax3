@@ -2,7 +2,7 @@ var mathjaxScriptPath = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtm
 var polyfillScript = 'https://polyfill.io/v3/polyfill.min.js?features=es6';
 var useCDN = mw.config.get('wgSmjUseCDN');
 if (useCDN === false) {
-  mathjaxScriptPath = mw.config.get('wgExtensionAssetsPath') + '/SimpleMathJax3/node_modules/MathJax/es5/tex-mml-chtml.js';
+  mathjaxScriptPath = mw.config.get('wgExtensionAssetsPath') + '/SimpleMathJax3/node_modules/mathjax/es5/tex-mml-chtml.js';
 }
 
 var MathJax = {
