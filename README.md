@@ -8,7 +8,7 @@ git clone git@github.com:dli7319/SimpleMathJax3.git
 ```
 2. Load the extension by editing `LocalSettings.php`
 ```PHP
-wfLoadExtension( 'SimpleMathJax' );
+wfLoadExtension( 'SimpleMathJax3' );
 ```
 3. (Optional) If not using the CDN
  * Set `$wgSmjUseCDN=false` in `LocalSettings.php`
