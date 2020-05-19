@@ -3,11 +3,6 @@ class SimpleMathJax
 {
     private static $moduleLoaded = false;
 
-    public static function onRegistration()
-    {
-        Hooks::register('ParserFirstCallInit', __CLASS__ . '::setup');
-    }
-
     public static function setup(Parser $parser)
     {
         global $wgOut, $wgSmjUseCDN, $wgSmjScale, $wgSmjUseChem, $wgSmjShowMathMenu,
@@ -61,5 +56,38 @@ class SimpleMathJax
         } else {
             return ["\\(\\displaystyle ${tex}\\)", 'markerType'=>'nowiki'];
         }
+    }
+
+    public static function onParserAfterTidy(Parser &$parser, &$text)
+    {
+        $header =<<<EOF
+<nowiki>
+<div style="display: none;">
+\(
+\\newcommand{\P}[]{\\unicode{xB6}}
+\\newcommand{\AA}[]{\\unicode{x212B}}
+\\newcommand{\\empty}[]{\\emptyset}
+\\newcommand{\O}[]{\\emptyset}
+\\newcommand{\Alpha}[]{Α}
+\\newcommand{\Beta}[]{Β}
+\\newcommand{\Epsilon}[]{Ε}
+\\newcommand{\Iota}[]{Ι}
+\\newcommand{\Kappa}[]{Κ}
+\\newcommand{\Rho}[]{Ρ}
+\\newcommand{\Tau}[]{Τ}
+\\newcommand{\Zeta}[]{Ζ}
+\\newcommand{\Mu}[]{\\unicode{x039C}}
+\\newcommand{\Chi}[]{Χ}
+\\newcommand{\Eta}[]{\\unicode{x0397}}
+\\newcommand{\Nu}[]{\\unicode{x039D}}
+\\newcommand{\Omicron}[]{\\unicode{x039F}}
+\DeclareMathOperator{\sgn}{sgn}
+\def\oiint{\mathop{\\vcenter{\mathchoice{\huge\unicode{x222F}\,}{\unicode{x222F}}{\unicode{x222F}}{\unicode{x222F}}}\,}\\nolimits}
+\def\oiiint{\mathop{\\vcenter{\mathchoice{\huge\unicode{x2230}\,}{\unicode{x2230}}{\unicode{x2230}}{\unicode{x2230}}}\,}\\nolimits}
+\)
+</div>
+</nowiki>
+EOF;
+        $text = $header . $text;
     }
 }

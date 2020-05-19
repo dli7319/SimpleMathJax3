@@ -13,10 +13,10 @@ var MathJax = {
   tex: {
     inlineMath: mw.config.get('wgSmjInlineMath'),
     displayMath: mw.config.get('wgSmjDisplayMath'),
-    packages: ['base', 'ams', 'autoload']
+    packages: ['base', 'ams', 'autoload', 'newcommand']
   },
   loader: {
-    load: []
+    load: ['[tex]/newcommand']
   }
 };
 

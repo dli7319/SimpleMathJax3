@@ -11,7 +11,6 @@
   "AutoloadClasses": {
     "SimpleMathJax": "SimpleMathJax_body.php"
   },
-  "callback": "SimpleMathJax::onRegistration",
   "config": {
     "SmjScale": 1.0,
     "SmjUseCDN": true,
@@ -37,5 +36,9 @@
     "localBasePath": "modules",
     "remoteExtPath": "SimpleMathJax3/modules"
   },
-  "manifest_version": 1
+  "manifest_version": 1,
+  "Hooks": {
+    "ParserFirstCallInit": "SimpleMathJax::setup",
+    "ParserAfterTidy": "SimpleMathJax::onParserAfterTidy"
+  }
 }
