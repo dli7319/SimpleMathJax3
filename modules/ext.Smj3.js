@@ -47,11 +47,7 @@ function loadMathJax() {
   mw.hook('wikipage.content').add(function (content) {
     if ("typeset" in window.MathJax && content != null) {
       window.MathJax.typeset(content);
-    } else {
-      console.error("MathJax.typeset() not found");
     }
-
-    console.log("Fired", content);
   });
 }
 
