@@ -18,16 +18,17 @@ wfLoadExtension( 'SimpleMathJax3' );
 # Settings
 | Setting name         | Default value                 | Description                                   |
 | -------------------- | ----------------------------- | --------------------------------------------- |
-| `$wgSmjScale`        | `1.0`                           | chtml font scale                              |
-| `$wgSmjUseCDN`       | `true`                          | use CDN or local scripts                      |
-| `$wgSmjUseChem`      | `true`                          | enable chem tag                               |
-| `$wgSmjInlineMath`   | `[["\\(","\\)"]]`               | inline math symbols pairs                     |
-| `$wgSmjDisplayMath`  | `[["\\[","\\]"],["$$","$$"]]`   | display math symbols pairs                    |
-| `$wgSmjShowMathMenu` | `true`                          | enable MathJax context menu                   |
-| `$wgSmjConvertMath`  | `true`                          | converts [`<math>`,`</math>`] to [`\(`,`\)`] on load  |
+| `$wgSmjScale`        | `1.0`                           | Use chtml font scale                              |
+| `$wgSmjUseCDN`       | `true`                          | Use CDN or local scripts                      |
+| `$wgSmjUseChem`      | `true`                          | Enable chem tag                               |
+| `$wgSmjInlineMath`   | `[["\\(","\\)"]]`               | Inline math symbols pairs                     |
+| `$wgSmjDisplayMath`  | `[["\\[","\\]"],["$$","$$"]]`   | Display math symbols pairs                    |
+| `$wgSmjShowMathMenu` | `true`                          | Enable MathJax context menu                   |
+| `$wgSmjConvertMath`  | `true`                          | Converts [`<math>`,`</math>`] to [`\(`,`\)`] on load  |
+| `$wgSmjConvertStyle`  | `"displaystyle"`                 | Default style for `<math>` conversion. Options: [`"displaystyle"`, `"textstyle"`]  |
 
 
 ## Notes
-* `$wgSmjConvertMath` will allow you to use your existing LaTeX math without editing your mediawiki pages.  
+* `$wgSmjConvertMath` will allow you to use your existing LaTeX math without editing your mediawiki pages.
 However, this will prevent you from using the MathML syntax with MathJax.
 * Do not use `$wgSmjConvertMath` with the Visual Editor if you want to keep `<math>` elements.

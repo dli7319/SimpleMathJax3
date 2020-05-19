@@ -1,10 +1,10 @@
 {
 	"name": "SimpleMathJax3",
-	"version": "0.7.4",
+	"version": "1.0",
 	"author": [
-		"jmnote", "vedmaka", "jamesmontalvo3", "badshah400"
+		"dli7319", "jmnote", "vedmaka", "jamesmontalvo3", "badshah400"
 	],
-	"url": "https://www.mediawiki.org/wiki/Extension:SimpleMathJax3",
+	"url": "https://github.com/dli7319/SimpleMathJax3",
 	"description": "render TeX between <code><nowiki><math></nowiki></code> and <code><nowiki></math></nowiki></code>",
 	"license-name": "GPL-2.0+",
 	"type": "parserhook",
@@ -19,7 +19,8 @@
 		"SmjShowMathMenu": true,
 		"SmjInlineMath": [["\\(","\\)"]],
 		"SmjDisplayMath": [["\\[","\\]"],["$$","$$"]],
-		"SmjConvertMath": true
+		"SmjConvertMath": true,
+		"SmjConvertStyle": "displaystyle"
 	},
 	"ResourceModules": {
 		"ext.Smj3": {"scripts":["ext.Smj3.js"], "targets":["mobile","desktop"] }

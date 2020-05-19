@@ -21,7 +21,7 @@ class SimpleMathJax
         $wgOut->addJsConfigVars('wgSmjScale', $wgSmjScale);
         $wgOut->addJsConfigVars('wgSmjUseChem', $wgSmjUseChem);
         $wgOut->addJsConfigVars('wgSmjShowMathMenu', $wgSmjShowMathMenu);
-        $wgSmjInlineMath[] = ["[math]","[/math]"];
+        // $wgSmjInlineMath[] = ["[math]","[/math]"];
         $wgOut->addJsConfigVars('wgSmjInlineMath', $wgSmjInlineMath);
         $wgOut->addJsConfigVars('wgSmjDisplayMath', $wgSmjDisplayMath);
         if ($wgSmjConvertMath) {
@@ -34,10 +34,10 @@ class SimpleMathJax
 
     public static function renderMath($tex, array $args, Parser $parser, PPFrame $frame)
     {
-        // $tex = str_replace('\>', '\;', $tex);
-        // $tex = str_replace('<', '\lt ', $tex);
-        // $tex = str_replace('>', '\gt ', $tex);
-        return self::renderTex($tex, $parser);
+        $tex = str_replace('\>', '\;', $tex);
+        $tex = str_replace('<', '\lt ', $tex);
+        $tex = str_replace('>', '\gt ', $tex);
+        return self::renderTex($tex, $args, $parser);
     }
 
     public static function renderChem($tex, array $args, Parser $parser, PPFrame $frame)
@@ -46,8 +46,20 @@ class SimpleMathJax
         return self::renderTex($tex, $parser);
     }
 
-    private static function renderTex($tex, $parser)
+    private static function renderTex($tex, array $args, $parser)
     {
-        return ["\\(${tex}\\)", 'markerType'=>'nowiki'];
+        global $wgSmjConvertStyle;
+        if (array_key_exists("display", $args)) {
+            if ($args["display"] == "inline") {
+                return ["\\(${tex}\\)", 'markerType'=>'nowiki'];
+            } elseif ($args["display"] == "block") {
+                return ["\\[${tex}\\]", 'markerType'=>'nowiki'];
+            }
+        }
+        if ($wgSmjConvertStyle == "textstyle") {
+            return ["\\(\\textstyle ${tex}\\)", 'markerType'=>'nowiki'];
+        } else {
+            return ["\\(\\displaystyle ${tex}\\)", 'markerType'=>'nowiki'];
+        }
     }
 }
