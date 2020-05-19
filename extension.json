@@ -1,33 +1,41 @@
 {
-	"name": "SimpleMathJax3",
-	"version": "1.0",
-	"author": [
-		"dli7319", "jmnote", "vedmaka", "jamesmontalvo3", "badshah400"
-	],
-	"url": "https://github.com/dli7319/SimpleMathJax3",
-	"description": "render TeX between <code><nowiki><math></nowiki></code> and <code><nowiki></math></nowiki></code>",
-	"license-name": "GPL-2.0+",
-	"type": "parserhook",
-	"AutoloadClasses": {
-		"SimpleMathJax": "SimpleMathJax_body.php"
-	},
-	"callback": "SimpleMathJax::onRegistration",
-	"config": {
-		"SmjScale": 1.0,
-		"SmjUseCDN": true,
-		"SmjUseChem": true,
-		"SmjShowMathMenu": true,
-		"SmjInlineMath": [["\\(","\\)"]],
-		"SmjDisplayMath": [["\\[","\\]"],["$$","$$"]],
-		"SmjConvertMath": true,
-		"SmjConvertStyle": "displaystyle"
-	},
-	"ResourceModules": {
-		"ext.Smj3": {"scripts":["ext.Smj3.js"], "targets":["mobile","desktop"] }
-	},
-	"ResourceFileModulePaths": {
-		"localBasePath": "modules",
-		"remoteExtPath": "SimpleMathJax3/modules"
-	},
-	"manifest_version": 1
+  "name": "SimpleMathJax3",
+  "version": "1.0",
+  "author": [
+    "dli7319", "jmnote", "vedmaka", "jamesmontalvo3", "badshah400"
+  ],
+  "url": "https://github.com/dli7319/SimpleMathJax3",
+  "description": "render TeX between <code><nowiki><math></nowiki></code> and <code><nowiki></math></nowiki></code>",
+  "license-name": "GPL-2.0+",
+  "type": "parserhook",
+  "AutoloadClasses": {
+    "SimpleMathJax": "SimpleMathJax_body.php"
+  },
+  "callback": "SimpleMathJax::onRegistration",
+  "config": {
+    "SmjScale": 1.0,
+    "SmjUseCDN": true,
+    "SmjUseChem": true,
+    "SmjShowMathMenu": true,
+    "SmjInlineMath": [
+      ["\\(", "\\)"]
+    ],
+    "SmjDisplayMath": [
+      ["\\[", "\\]"],
+      ["$$", "$$"]
+    ],
+    "SmjConvertMath": true,
+    "SmjConvertStyle": "displaystyle"
+  },
+  "ResourceModules": {
+    "ext.Smj3": {
+      "scripts": ["ext.Smj3.js"],
+      "targets": ["mobile", "desktop"]
+    }
+  },
+  "ResourceFileModulePaths": {
+    "localBasePath": "modules",
+    "remoteExtPath": "SimpleMathJax3/modules"
+  },
+  "manifest_version": 1
 }

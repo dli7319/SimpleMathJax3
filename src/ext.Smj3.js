@@ -1,81 +1,72 @@
-"use strict";
+const useCDN = mw.config.get('wgSmjUseCDN');
+const mathjaxScriptPath = useCDN
+  ? 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  : mw.config.get('wgExtensionAssetsPath') +
+    '/SimpleMathJax3/node_modules/mathjax/es5/tex-mml-chtml.js';
+const polyfillScript = 'https://polyfill.io/v3/polyfill.min.js?features=es6';
 
-var useCDN = mw.config.get('wgSmjUseCDN');
-var mathjaxScriptPath = useCDN ? 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js' : mw.config.get('wgExtensionAssetsPath') + '/SimpleMathJax3/node_modules/mathjax/es5/tex-mml-chtml.js';
-var polyfillScript = 'https://polyfill.io/v3/polyfill.min.js?features=es6';
-var MathJax = {
+const MathJax = {
   options: {
-    renderActions: {}
+    renderActions: {},
   },
   chtml: {
-    scale: mw.config.get('wgSmjScale')
+    scale: mw.config.get('wgSmjScale'),
   },
   tex: {
     inlineMath: mw.config.get('wgSmjInlineMath'),
     displayMath: mw.config.get('wgSmjDisplayMath'),
-    packages: ['base', 'ams', 'autoload']
+    packages: ['base', 'ams', 'autoload'],
   },
   loader: {
-    load: []
-  }
+    load: [],
+  },
 };
-
 if (mw.config.get('wgSmjUseChem')) {
   MathJax.tex.packages.push('mhchem');
   MathJax.loader.load.push('[tex]/mhchem');
 }
-
 if (mw.config.get('wgSmjShowMathMenu') === false) {
   MathJax.options.renderActions.addMenu = [];
   MathJax.options.renderActions.checkLoader = [];
 }
-
 window.MathJax = MathJax;
 
 if (useCDN === false) {
   loadMathJax();
 } else {
   loadScript(polyfillScript, {
-    done: loadMathJax
+    done: loadMathJax,
   });
 }
 
 function loadMathJax() {
   loadScript(mathjaxScriptPath, {
-    id: 'MathJax-script'
+    id: 'MathJax-script',
   });
-  mw.hook('wikipage.content').add(function (content) {
+  mw.hook('wikipage.content').add((content) => {
     if ("typeset" in window.MathJax && content != null) {
       window.MathJax.typeset(content);
-    } else {
-      console.error("MathJax.typeset() not found");
     }
-
-    console.log("Fired", content);
   });
 }
 
 function loadScript(src, options) {
   options = options || {};
-  var done = options.done;
-  var js = document.createElement('script');
+  const done = options.done;
+  const js = document.createElement('script');
   js.src = src;
-
-  js.onload = function () {
+  js.onload = () => {
     if (done != null) {
       done();
     }
   };
-
-  js.onerror = function () {
+  js.onerror = () => {
     if (done != null) {
       done(new Error('Failed to load script ' + src));
     }
   };
-
   if (options.id != null) {
     js.id = options.id;
   }
-
   document.head.appendChild(js);
 }

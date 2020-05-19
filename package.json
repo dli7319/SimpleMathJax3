@@ -6,8 +6,13 @@
   "dependencies": {
     "mathjax": "^3.0.5"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6"
+  },
   "scripts": {
+    "build": "babel src/ext.Smj3.js -d modules",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,7 +20,7 @@
     "url": "git+https://github.com/dli7319/SimpleMathJax3.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "GPLv2",
   "bugs": {
     "url": "https://github.com/dli7319/SimpleMathJax3/issues"
   },

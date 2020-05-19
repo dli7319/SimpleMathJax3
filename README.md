@@ -32,3 +32,7 @@ wfLoadExtension( 'SimpleMathJax3' );
 * `$wgSmjConvertMath` will allow you to use your existing LaTeX math without editing your mediawiki pages.
 However, this will prevent you from using the MathML syntax with MathJax.
 * Do not use `$wgSmjConvertMath` with the Visual Editor if you want to keep `<math>` elements.
+
+# Development
+* Edit `src/ext.Smj3.js`
+* Run `npm build`
