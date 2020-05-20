@@ -39,6 +39,6 @@
   "manifest_version": 1,
   "Hooks": {
     "ParserFirstCallInit": "SimpleMathJax::setup",
-    "ParserAfterTidy": "SimpleMathJax::onParserAfterTidy"
+    "ArticleViewHeader": "SimpleMathJax::onArticleViewHeader"
   }
 }

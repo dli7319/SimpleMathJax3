@@ -58,10 +58,9 @@ class SimpleMathJax
         }
     }
 
-    public static function onParserAfterTidy(Parser &$parser, &$text)
+    public static function onArticleViewHeader( &$article, &$outputDone, &$pcache )
     {
         $header =<<<EOF
-<nowiki>
 <div style="display: none;">
 \(
 \\newcommand{\P}[]{\\unicode{xB6}}
@@ -86,8 +85,7 @@ class SimpleMathJax
 \def\oiiint{\mathop{\\vcenter{\mathchoice{\huge\unicode{x2230}\,}{\unicode{x2230}}{\unicode{x2230}}{\unicode{x2230}}}\,}\\nolimits}
 \)
 </div>
-</nowiki>
 EOF;
-        $text = $header . $text;
+        $article->getContext()->getOutput()->addHTML($header);
     }
 }
