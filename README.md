@@ -2,7 +2,7 @@ The SimpleMathJax3 extension enables MathJax v3 for typesetting TeX formula in M
 
 # Features
 * Displays `<math>` and `</math>` symbols
-** Supports `display="block"`, `display="inline"`, and unspecified modes.
+ * Supports `display="block"`, `display="inline"`, and unspecified modes.
 
 # Installation
 1. `git clone` to your `extensions` directory
