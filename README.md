@@ -1,5 +1,8 @@
 The SimpleMathJax3 extension enables MathJax v3 for typesetting TeX formula in MediaWiki inside math environments.
 
+# Features
+* Displays `<math>` and `</math>` symbols
+** Supports `display="block"`, `display="inline"`, and unspecified modes.
 
 # Installation
 1. `git clone` to your `extensions` directory
@@ -25,7 +28,7 @@ wfLoadExtension( 'SimpleMathJax3' );
 | `$wgSmjDisplayMath`  | `[["\\[","\\]"],["$$","$$"]]`   | Display math symbols pairs                    |
 | `$wgSmjShowMathMenu` | `true`                          | Enable MathJax context menu                   |
 | `$wgSmjConvertMath`  | `true`                          | Converts [`<math>`,`</math>`] to [`\(`,`\)`] on load  |
-| `$wgSmjConvertStyle`  | `"displaystyle"`                 | Default style for `<math>` conversion. Options: [`"displaystyle"`, `"textstyle"`]  |
+| `$wgSmjConvertStyle`  | `"displaystyle"`                 | Default style for unspecified `<math>` conversion. Options: [`"displaystyle"`, `"textstyle"`]  |
 
 
 ## Notes
