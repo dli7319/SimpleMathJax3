@@ -16,6 +16,7 @@ const MathJax = {
     inlineMath: mw.config.get('wgSmjInlineMath'),
     displayMath: mw.config.get('wgSmjDisplayMath'),
     packages: ['base', 'ams', 'autoload', 'newcommand'],
+    tags: 'ams'
   },
   loader: {
     load: ['[tex]/newcommand'],
