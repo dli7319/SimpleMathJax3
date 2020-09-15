@@ -28,8 +28,7 @@
   },
   "ResourceModules": {
     "ext.Smj3": {
-      "scripts": ["ext.Smj3.js"],
-      "targets": ["mobile", "desktop"]
+      "scripts": ["ext.Smj3.js"]
     }
   },
   "ResourceFileModulePaths": {
