@@ -28,7 +28,7 @@
   },
   "ResourceModules": {
     "ext.Smj3": {
-      "scripts": ["ext.Smj3.js"]
+      "packageFiles": ["ext.Smj3.js"]
     }
   },
   "ResourceFileModulePaths": {
