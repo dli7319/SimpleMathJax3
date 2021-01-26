@@ -14,8 +14,8 @@ git clone git@github.com:dli7319/SimpleMathJax3.git
 wfLoadExtension( 'SimpleMathJax3' );
 ```
 3. (Optional) If not using the CDN
- * Set `$wgSmjUseCDN=false` in `LocalSettings.php`
- * Run `npm ci` within `SimpleMathJax3` to download mathjax
+ * Set `$wgSmjUseCDN=false` in `LocalSettings.php`.
+ * Clone the submodule with `git submodule update --recursive --init`.
 
 
 # Settings
