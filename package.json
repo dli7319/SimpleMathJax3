@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "The SimpleMathJax3 extension enables MathJax v3 for typesetting TeX formula in MediaWiki inside math environments.",
   "main": "index.js",
-  "dependencies": {
-    "mathjax": "^3.0.5"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.6",

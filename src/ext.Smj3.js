@@ -2,7 +2,7 @@ const useCDN = mw.config.get('wgSmjUseCDN');
 const mathjaxScriptPath = useCDN
   ? 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
   : mw.config.get('wgExtensionAssetsPath') +
-    '/SimpleMathJax3/node_modules/mathjax/es5/tex-mml-chtml.js';
+    '/SimpleMathJax3/MathJax/es5/tex-mml-chtml.js';
 const polyfillScript = 'https://polyfill.io/v3/polyfill.min.js?features=es6';
 
 const MathJax = {

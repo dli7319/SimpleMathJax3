@@ -1,7 +1,7 @@
 "use strict";
 
 var useCDN = mw.config.get('wgSmjUseCDN');
-var mathjaxScriptPath = useCDN ? 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js' : mw.config.get('wgExtensionAssetsPath') + '/SimpleMathJax3/node_modules/mathjax/es5/tex-mml-chtml.js';
+var mathjaxScriptPath = useCDN ? 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js' : mw.config.get('wgExtensionAssetsPath') + '/SimpleMathJax3/MathJax/es5/tex-mml-chtml.js';
 var polyfillScript = 'https://polyfill.io/v3/polyfill.min.js?features=es6';
 var MathJax = {
   options: {
